@@ -1,0 +1,43 @@
+﻿@model IEnumerable<test1.Models.Library>
+
+@{
+    ViewData["Title"] = "Libraris";
+}
+
+<h1>Libraris</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.genre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre)
+            </td>
+            <td>
+                @Html.ActionLink("עריכה", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("פרטים", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("מחיקה", "Delete", new { /* id=item.PrimaryKey */ })|
+                    @Html.ActionLink("הוספת מדף", "AddingShelf", new { id = item.id  })|
+                    @Html.ActionLink("הוספת ספר", "AddingBoook", new { id = item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
